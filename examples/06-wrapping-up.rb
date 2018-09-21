@@ -13,6 +13,8 @@ class RecordProcessor
     @logger.info('finished processing')
   end
 
+  private
+
   def process_record(record)
     name = retrieve(:name, record)
     town = retrieve(:town, record)

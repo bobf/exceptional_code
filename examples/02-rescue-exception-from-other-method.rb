@@ -3,15 +3,16 @@ $global_storage = {
 }
 
 def process_records(records)
-  begin
-    puts 'processing records'
-    records.each do |record|
+  puts 'processing records'
+
+  records.each do |record|
+    begin
       name = record.fetch(:name)
       town = record.fetch(:town)
       save_record(name, town)
+    rescue KeyError
+      puts 'missing fields, skipping record'
     end
-  rescue KeyError
-    puts 'missing fields, skipping record'
   end
 
   puts 'finished processing'
